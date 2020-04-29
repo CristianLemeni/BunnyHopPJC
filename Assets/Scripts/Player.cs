@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
     private Rigidbody2D playerRigidbody;
-    private Animator playerAnimator;
-
-    [SerializeField]
-    private float movementSpeed;
-
-    private bool facingRight;
-
+   
     [SerializeField]
     private Transform[] groundPoints;
 
@@ -29,11 +23,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool airRunning;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        facingRight = true;
+        base.Start();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        playerAnimator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -48,26 +42,26 @@ public class Player : MonoBehaviour
 
         HandleLayers();
         
-        ChangeDirection(horizontal);
+        PlayerChangeDirection(horizontal);
 
         Reset();
     }
 
     private void HandleMovement(float horizontal){
         if(playerRigidbody.velocity.y < 0){
-            playerAnimator.SetBool("land", true);
+            PlayerAnimator.SetBool("land", true);
         }
         if(isGrounded || airRunning){
             playerRigidbody.velocity = new Vector2(horizontal * movementSpeed, playerRigidbody.velocity.y);
 
-            playerAnimator.SetFloat("speed", Mathf.Abs(horizontal));
+            PlayerAnimator.SetFloat("speed", Mathf.Abs(horizontal));
         }
 
         if(isGrounded && isJumping){
             isGrounded = false;
 
             playerRigidbody.AddForce(new Vector2(0, jump));
-            playerAnimator.SetTrigger("jump");
+            PlayerAnimator.SetTrigger("jump");
         }
     }
 
@@ -77,14 +71,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ChangeDirection(float horizontal){
+    private void PlayerChangeDirection(float horizontal){
         if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight){
-            facingRight = !facingRight;
-            Vector3 playerScale = transform.localScale;
-
-            playerScale.x *= -1;
-
-            transform.localScale = playerScale;
+            ChangeDirection();
         }
     }
 
@@ -97,8 +86,8 @@ public class Player : MonoBehaviour
                 for (int i = 0; i < colliders.Length; i++)
                 {
                     if(colliders[i].gameObject != gameObject){
-                        playerAnimator.ResetTrigger("jump");
-                        playerAnimator.SetBool("land", false);
+                        PlayerAnimator.ResetTrigger("jump");
+                        PlayerAnimator.SetBool("land", false);
                         return true;
                     }
                 }
@@ -113,10 +102,10 @@ public class Player : MonoBehaviour
 
     private void HandleLayers(){
         if(!isGrounded){
-            playerAnimator.SetLayerWeight(1, 1);
+            PlayerAnimator.SetLayerWeight(1, 1);
         }
         else{
-            playerAnimator.SetLayerWeight(1, 0);
+            PlayerAnimator.SetLayerWeight(1, 0);
         }
     }
 }
