@@ -108,4 +108,22 @@ public class Player : Character
             PlayerAnimator.SetLayerWeight(1, 0);
         }
     }
+
+    public override IEnumerator TakeDamage(){
+        health -= 1;
+
+        if(!Die){
+            PlayerAnimator.SetTrigger("hurt");
+        }
+        else{
+            PlayerAnimator.SetTrigger("die");
+            yield return null;
+        }
+    }
+
+    public override bool Die{
+        get {
+            return health <= 0;
+        }
+    }
 }

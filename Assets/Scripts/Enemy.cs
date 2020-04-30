@@ -56,4 +56,13 @@ public class Enemy : Character
         return facingRight ? Vector2.right : Vector2.left;
     }
 
+    public override IEnumerator TakeDamage(){
+        yield return null;
+    }
+
+    public override bool Die{
+        get {
+             return health <= 0;
+        }
+    }
 }
