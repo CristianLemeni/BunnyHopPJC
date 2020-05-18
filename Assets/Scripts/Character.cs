@@ -31,5 +31,11 @@ public abstract class Character : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
     }
 
+    public virtual void OnTriggerEnter2D(Collider2D other){
+        
+    }
+
     public abstract IEnumerator TakeDamage();
+
+    public abstract void Death();
 }

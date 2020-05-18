@@ -65,4 +65,8 @@ public class Enemy : Character
              return health <= 0;
         }
     }
+
+    public override void Death(){
+        Destroy(gameObject);
+    }
 }

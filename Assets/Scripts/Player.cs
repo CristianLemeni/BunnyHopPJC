@@ -36,6 +36,10 @@ public class Player : Character
         float horizontal = Input.GetAxis("Horizontal");
         isGrounded = Grounded();
 
+        if(playerRigidbody.position.y <= -14f){
+            Death();
+        }
+
         HandleInput();
 
         HandleMovement(horizontal);
@@ -125,5 +129,11 @@ public class Player : Character
         get {
             return health <= 0;
         }
+    }
+
+    public override void Death(){
+        playerRigidbody.velocity = Vector2.zero;
+        PlayerAnimator.SetTrigger("Idle");
+        health = 50;
     }
 }
