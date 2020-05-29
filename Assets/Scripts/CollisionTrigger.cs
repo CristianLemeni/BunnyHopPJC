@@ -10,6 +10,7 @@ public class CollisionTrigger : MonoBehaviour
     private BoxCollider2D platformCollider;
     [SerializeField]
     private BoxCollider2D platformTrigger;
+
     // Start is called before the first frame update
     void Start()
     {
