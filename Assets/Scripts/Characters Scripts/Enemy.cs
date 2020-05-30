@@ -7,6 +7,19 @@ public class Enemy : Character
     private IEnemyState currentState;
 
     public GameObject Target { get; set; }
+    [SerializeField]
+    public float AttackRange;
+    public bool InAttackRange
+    {
+        get
+        {
+            if (Target != null)
+            {
+                return Vector2.Distance(transform.position, Target.transform.position) <= AttackRange;
+            }
+            return false;
+        }
+    }
 
     // Start is called before the first frame update
     public override void Start()
@@ -56,20 +69,21 @@ public class Enemy : Character
         //get player script val
         GameObject player = GameObject.Find("Player");
         Player playerScript = player.GetComponent<Player>();
-        Debug.Log(playerScript.isSliding);
+        //Debug.Log(playerScript.isSliding);
+
         if (collider.tag == "Player" && playerScript.isSliding)
         {
-            StartCoroutine(TakeDamage());  
+            StartCoroutine(TakeDamage());
         }
-      
+
         currentState.OnTriggerEnter(collider);
     }
 
-    public void Move()
+    public void Move(float multiplier = 1)
     {
         CharacterAnimator.SetFloat("speed", 1);
 
-        transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
+        transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime) * multiplier);
     }
 
     public Vector2 GetDirection()
@@ -79,7 +93,7 @@ public class Enemy : Character
 
     public override IEnumerator TakeDamage()
     {
-        Health  -= 1;
+        Health -= 1;
 
         if (IsDead)
         {

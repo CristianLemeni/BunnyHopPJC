@@ -6,4 +6,9 @@
 /Temp
 /UIElementsSchema
 /.vs
-
+/Library/metadata
+/Library/GridBrush
+/Library/PackageCache
+/Library/ScriptAssemblies
+/Library/ShaderCache
+/Library/StateCache

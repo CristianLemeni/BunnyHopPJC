@@ -16,7 +16,7 @@ public class Player : Character
 
     private bool IsGrounded;
     private bool Jump;
-    private bool Slide;
+
 
     public bool isSliding;
 
@@ -28,7 +28,13 @@ public class Player : Character
 
     private Vector3 startPosition;
 
-    
+    public override bool IsDead
+    {
+        get
+        {
+            return Health <= 0;
+        }
+    }
 
     // Start is called before the first frame update
     public override void Start()
@@ -43,29 +49,29 @@ public class Player : Character
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (TakeDamege)
+        {
+            playerRigidbody.velocity = Vector2.zero;
+            return;
+        }
         float horizontal = Input.GetAxis("Horizontal");
+
         IsGrounded = Grounded();
 
-        if (playerRigidbody.position.y <= -14f)
-        {
-            Death();
-        }
+        if (playerRigidbody.position.y <= -14f) { Death(); }
 
-        if(IsDead){
-            Death();
-            
-        }
-
-        HandleInput();
-
-        HandleMovement(horizontal);
 
         HandleLayers();
-
         PlayerChangeDirection(horizontal);
+        HandleInput();
+        HandleMovement(horizontal);
 
-        Reset();
+
+
+
+        Reset();     
         isSliding = CharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide");
+
     }
 
     private void HandleMovement(float horizontal)
@@ -74,14 +80,15 @@ public class Player : Character
         {
             CharacterAnimator.SetBool("land", true);
         }
-        if (!Slide && (IsGrounded || airRunning))
+
+        if (!isSliding && (IsGrounded || airRunning))
         {
             playerRigidbody.velocity = new Vector2(horizontal * movementSpeed, playerRigidbody.velocity.y);
         }
 
-        if (IsGrounded && Jump)
+        if (!isSliding && IsGrounded && Jump)
         {
-            // IsGrounded = false;
+            IsGrounded = false;
             playerRigidbody.AddForce(new Vector2(0, JumpForce));
 
         }
@@ -98,8 +105,7 @@ public class Player : Character
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
-        { 
-            Slide = true;
+        {
             CharacterAnimator.SetTrigger("slide");
             isSliding = true;
         }
@@ -139,12 +145,8 @@ public class Player : Character
     private void Reset()
     {
         Jump = false;
-        Slide = false;
-        if(IsDead){
-            Health = 1;
-            Invoke("spawn", 1);
-            
-        }
+        isSliding = false;
+
     }
 
     private void HandleLayers()
@@ -167,37 +169,31 @@ public class Player : Character
         {
             CharacterAnimator.SetLayerWeight(1, 0);
             CharacterAnimator.SetTrigger("die");
+
+            Health = 10;
+            Invoke("Death", 1);
+
             yield return null;
         }
         else
             CharacterAnimator.SetTrigger("hurt");
     }
 
-    public override bool IsDead
-    {
-        get
-        {
-            return Health <= 0;
-        }
-    }
 
     public override void Death()
     {
         playerRigidbody.velocity = Vector2.zero;
-        //CharacterAnimator.SetTrigger("Idle");
+        transform.position = startPosition;
+
     }
 
     public override void OnTriggerEnter2D(Collider2D collider)
     {
-        
-        if (collider.tag == "Enemy" )
+
+        if (collider.tag == "Enemy")
         {
             StartCoroutine(TakeDamage());
         }
-    }
-
-    public void spawn(){
-        transform.position = startPosition;
     }
 
 }

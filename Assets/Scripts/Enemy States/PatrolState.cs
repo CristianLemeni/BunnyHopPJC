@@ -8,6 +8,8 @@ public class PatrolState : IEnemyState
     private float patrolTimer;
     private float patrolDuration = 5;
 
+
+
     public void Enter(Enemy enemy){
         this.enemy = enemy;
     }
@@ -17,7 +19,8 @@ public class PatrolState : IEnemyState
 
         enemy.Move();
 
-        if(enemy.Target != null){
+        if(enemy.Target != null && enemy.InAttackRange)
+        {
             enemy.ChangeState(new AttackState());
         }
     }
