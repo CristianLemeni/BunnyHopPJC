@@ -53,9 +53,13 @@ public class Enemy : Character
 
     public override void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Player" )
+        //get player script val
+        GameObject player = GameObject.Find("Player");
+        Player playerScript = player.GetComponent<Player>();
+        Debug.Log(playerScript.isSliding);
+        if (collider.tag == "Player" && playerScript.isSliding)
         {
-            StartCoroutine(TakeDamage());
+            StartCoroutine(TakeDamage());  
         }
       
         currentState.OnTriggerEnter(collider);

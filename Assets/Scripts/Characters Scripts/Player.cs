@@ -18,19 +18,25 @@ public class Player : Character
     private bool Jump;
     private bool Slide;
 
+    public bool isSliding;
+
     [SerializeField]
     private float JumpForce;
 
     [SerializeField]
     private bool airRunning;
 
+    private Vector3 startPosition;
 
+    
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        isSliding = false;
+        startPosition = transform.position;
 
     }
 
@@ -45,6 +51,11 @@ public class Player : Character
             Death();
         }
 
+        if(IsDead){
+            Death();
+            
+        }
+
         HandleInput();
 
         HandleMovement(horizontal);
@@ -54,6 +65,7 @@ public class Player : Character
         PlayerChangeDirection(horizontal);
 
         Reset();
+        isSliding = CharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide");
     }
 
     private void HandleMovement(float horizontal)
@@ -88,6 +100,8 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.LeftControl))
         { 
             Slide = true;
+            CharacterAnimator.SetTrigger("slide");
+            isSliding = true;
         }
 
     }
@@ -126,6 +140,11 @@ public class Player : Character
     {
         Jump = false;
         Slide = false;
+        if(IsDead){
+            Health = 1;
+            Invoke("spawn", 1);
+            
+        }
     }
 
     private void HandleLayers()
@@ -165,8 +184,7 @@ public class Player : Character
     public override void Death()
     {
         playerRigidbody.velocity = Vector2.zero;
-        CharacterAnimator.SetTrigger("Idle");
-        Health = 50;
+        //CharacterAnimator.SetTrigger("Idle");
     }
 
     public override void OnTriggerEnter2D(Collider2D collider)
@@ -175,8 +193,11 @@ public class Player : Character
         if (collider.tag == "Enemy" )
         {
             StartCoroutine(TakeDamage());
-            Debug.Log("DAMAGE");
         }
+    }
+
+    public void spawn(){
+        transform.position = startPosition;
     }
 
 }
