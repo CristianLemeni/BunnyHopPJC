@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/obj
+/Temp
+/UIElementsSchema
+/.vs
+/Library/metadata
+/Library/GridBrush
+/Library/PackageCache
+/Library/ScriptAssemblies
+/Library/ShaderCache
+/Library/StateCache
