@@ -18,19 +18,22 @@ public class Player : Character
     private bool Jump;
     private bool Slide;
 
+    public bool isSliding;
+
     [SerializeField]
     private float JumpForce;
 
     [SerializeField]
     private bool airRunning;
 
-
+    
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        isSliding = false;
 
     }
 
@@ -54,6 +57,7 @@ public class Player : Character
         PlayerChangeDirection(horizontal);
 
         Reset();
+        isSliding = CharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide");
     }
 
     private void HandleMovement(float horizontal)
@@ -88,6 +92,8 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.LeftControl))
         { 
             Slide = true;
+            CharacterAnimator.SetTrigger("slide");
+            isSliding = true;
         }
 
     }
@@ -175,7 +181,6 @@ public class Player : Character
         if (collider.tag == "Enemy" )
         {
             StartCoroutine(TakeDamage());
-            Debug.Log("DAMAGE");
         }
     }
 
