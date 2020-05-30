@@ -169,5 +169,14 @@ public class Player : Character
         Health = 50;
     }
 
+    public override void OnTriggerEnter2D(Collider2D collider)
+    {
+        
+        if (collider.tag == "Enemy" )
+        {
+            StartCoroutine(TakeDamage());
+            Debug.Log("DAMAGE");
+        }
+    }
 
 }
