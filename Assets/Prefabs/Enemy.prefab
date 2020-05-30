@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4833061361472690752}
   - component: {fileID: 4833061361472690765}
   - component: {fileID: 4833061361472690754}
+  - component: {fileID: 6353442963775181384}
   m_Layer: 0
   m_Name: Sight
   m_TagString: Untagged
@@ -71,6 +72,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 11.75, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6353442963775181384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833061361472690753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a639f1690c6e86e4ca4f1156544c23fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 6490367588031822874}
 --- !u!1 &4833061361545284496
 GameObject:
   m_ObjectHideFlags: 0

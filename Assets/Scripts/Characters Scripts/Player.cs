@@ -26,6 +26,8 @@ public class Player : Character
     [SerializeField]
     private bool airRunning;
 
+    private Vector3 startPosition;
+
     
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class Player : Character
         base.Start();
         playerRigidbody = GetComponent<Rigidbody2D>();
         isSliding = false;
+        startPosition = transform.position;
 
     }
 
@@ -46,6 +49,11 @@ public class Player : Character
         if (playerRigidbody.position.y <= -14f)
         {
             Death();
+        }
+
+        if(IsDead){
+            Death();
+            
         }
 
         HandleInput();
@@ -132,6 +140,11 @@ public class Player : Character
     {
         Jump = false;
         Slide = false;
+        if(IsDead){
+            Health = 1;
+            Invoke("spawn", 1);
+            
+        }
     }
 
     private void HandleLayers()
@@ -171,8 +184,7 @@ public class Player : Character
     public override void Death()
     {
         playerRigidbody.velocity = Vector2.zero;
-        CharacterAnimator.SetTrigger("Idle");
-        Health = 50;
+        //CharacterAnimator.SetTrigger("Idle");
     }
 
     public override void OnTriggerEnter2D(Collider2D collider)
@@ -182,6 +194,10 @@ public class Player : Character
         {
             StartCoroutine(TakeDamage());
         }
+    }
+
+    public void spawn(){
+        transform.position = startPosition;
     }
 
 }
