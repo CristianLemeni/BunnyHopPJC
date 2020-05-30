@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class IdleState : IEnemyState
 {
@@ -8,32 +6,39 @@ public class IdleState : IEnemyState
     private float idleTimer;
     private float idleDuration = 3;
 
-    public void Enter(Enemy enemy){
+    public void Enter(Enemy enemy)
+    {
         this.enemy = enemy;
     }
 
-    public void Execute(){
+    public void Execute()
+    {
         Idle();
 
-        if(enemy.Target != null){
+        if (enemy.Target != null)
+        {
             enemy.ChangeState(new PatrolState());
         }
     }
 
-    public void Exit(){
-        
+    public void Exit()
+    {
+
     }
 
-    public void OnTriggerEnter(Collider2D other){
-        
+    public void OnTriggerEnter(Collider2D other)
+    {
+
     }
 
-    private void Idle(){
+    private void Idle()
+    {
         enemy.CharacterAnimator.SetFloat("speed", 0);
         idleTimer += Time.deltaTime;
 
-        if(idleTimer >= idleDuration){
+        if (idleTimer >= idleDuration)
+        {
             enemy.ChangeState(new PatrolState());
         }
-    }   
+    }
 }

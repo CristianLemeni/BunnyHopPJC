@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PatrolState : IEnemyState
 {
@@ -10,37 +8,44 @@ public class PatrolState : IEnemyState
 
 
 
-    public void Enter(Enemy enemy){
+    public void Enter(Enemy enemy)
+    {
         this.enemy = enemy;
     }
 
-    public void Execute(){
+    public void Execute()
+    {
         Patrol();
 
         enemy.Move();
 
-        if(enemy.Target != null && enemy.InAttackRange)
+        if (enemy.Target != null && enemy.InAttackRange)
         {
             enemy.ChangeState(new AttackState());
         }
     }
 
 
-    public void Exit(){
-        
+    public void Exit()
+    {
+
     }
 
-    public void OnTriggerEnter(Collider2D other){
-        if(other.tag == "Edge"){
+    public void OnTriggerEnter(Collider2D other)
+    {
+        if (other.tag == "Edge")
+        {
             enemy.ChangeDirection();
         }
     }
 
-    private void Patrol(){
+    private void Patrol()
+    {
         patrolTimer += Time.deltaTime;
 
-        if(patrolTimer >= patrolDuration){
+        if (patrolTimer >= patrolDuration)
+        {
             enemy.ChangeState(new IdleState());
         }
-    }   
+    }
 }

@@ -69,7 +69,7 @@ public class Player : Character
 
 
 
-        Reset();     
+        Reset();
         isSliding = CharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide");
 
     }

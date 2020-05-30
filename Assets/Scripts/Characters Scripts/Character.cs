@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    public Animator CharacterAnimator{get; private set;}
+    public Animator CharacterAnimator { get; private set; }
 
     [SerializeField]
     protected float movementSpeed;
@@ -13,7 +13,7 @@ public abstract class Character : MonoBehaviour
 
     protected bool facingRight;
 
-    public abstract bool IsDead {get;}
+    public abstract bool IsDead { get; }
 
     public bool TakeDamege { get; set; }
 
@@ -29,10 +29,11 @@ public abstract class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void ChangeDirection(){
+    public void ChangeDirection()
+    {
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
     }
@@ -45,5 +46,5 @@ public abstract class Character : MonoBehaviour
 
     public abstract void Death();
 
-    
+
 }
