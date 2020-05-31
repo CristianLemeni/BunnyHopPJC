@@ -9,6 +9,7 @@ public class Enemy : Character
     public GameObject Target { get; set; }
     [SerializeField]
     public float AttackRange;
+    public bool IsSliding;
     public bool InAttackRange
     {
         get

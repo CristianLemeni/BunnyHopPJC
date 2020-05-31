@@ -189,7 +189,7 @@ public class Player : Character
 
     public override void OnTriggerEnter2D(Collider2D collider)
     {
-
+        
         if (collider.tag == "Enemy")
         {
             StartCoroutine(TakeDamage());
