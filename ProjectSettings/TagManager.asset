@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - EnemyVision
   - Platform
+  - PlayerFeet
+  - EndLevel
   layers:
   - Default
   - TransparentFX

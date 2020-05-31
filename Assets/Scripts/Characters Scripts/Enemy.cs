@@ -74,7 +74,7 @@ public class Enemy : Character
         Player playerScript = player.GetComponent<Player>();
         //Debug.Log(playerScript.isSliding);
 
-        if (collider.tag == "Player" && playerScript.isSliding)
+        if (collider.tag == "PlayerFeet" && playerScript.isSliding)
         {
             StartCoroutine(TakeDamage());
         }
@@ -102,6 +102,7 @@ public class Enemy : Character
         {
             CharacterAnimator.SetTrigger("die");
             yield return null;
+            Death();
         }
         else
             CharacterAnimator.SetTrigger("hurt");
@@ -118,6 +119,7 @@ public class Enemy : Character
 
     public override void Death()
     {
-        Destroy(gameObject);
+
+        Destroy(gameObject, 2f);
     }
 }

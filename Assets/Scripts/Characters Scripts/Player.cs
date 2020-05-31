@@ -30,6 +30,16 @@ public class Player : Character
 
     private Vector3 startPosition;
 
+
+
+    private float AttackTimer;
+    [SerializeField]
+    private float AttackCooldown = 2;
+    private bool CanAttack = true;
+
+
+    public bool LevelFinished = false;
+
     public override bool IsDead
     {
         get
@@ -104,13 +114,13 @@ public class Player : Character
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyUp(KeyCode.W))
         {
             Jump = true;
             CharacterAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyUp(KeyCode.S))
         {
             CharacterAnimator.SetTrigger("slide");
             isSliding = true;
@@ -202,6 +212,25 @@ public class Player : Character
         if (collider.tag == "Enemy" && enemyScript.IsSliding)
         {
             StartCoroutine(TakeDamage());
+        }
+        if(collider.tag == "EndLevel")
+        {
+            LevelFinished = true;
+        }
+    }
+    private void Attack()
+    {
+        AttackTimer += Time.deltaTime;
+
+        if (AttackTimer >= AttackCooldown)
+        {
+            CanAttack = true;
+            AttackTimer = 0;
+        }
+        if (CanAttack)
+        {
+            CanAttack = false;
+            CharacterAnimator.SetTrigger("slide");
         }
     }
 

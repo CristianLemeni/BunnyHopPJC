@@ -9,9 +9,20 @@ public class LevelLoderScript : MonoBehaviour
 
     public float TransitionTime = 1f;
 
+    [SerializeField]
+    public Player Player;
+
     // Update is called once per frame
     void Update()
     {
+
+        if (Player.LevelFinished)
+        {
+
+            LoadNextLevel();
+        }
+
+
         if (Input.GetKeyDown(KeyCode.N))
         {
             LoadNextLevel();
@@ -20,6 +31,12 @@ public class LevelLoderScript : MonoBehaviour
         {
             LoadPreviousLevel();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
     }
 
     private void LoadPreviousLevel()
@@ -35,7 +52,7 @@ public class LevelLoderScript : MonoBehaviour
 
     IEnumerator LoadLevel(int LevelIndex)
     {
-        if (LevelIndex > SceneManager.sceneCount || LevelIndex < 0 ) yield break ;
+        if (LevelIndex >= SceneManager.sceneCountInBuildSettings || LevelIndex < 0 ) yield break ;
         animator.SetTrigger("start");
 
         yield return new WaitForSeconds(TransitionTime);
