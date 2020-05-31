@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -36,6 +38,9 @@ public class Player : Character
         }
     }
 
+    [SerializeField]
+    public Slider hitPoints;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -43,7 +48,8 @@ public class Player : Character
         playerRigidbody = GetComponent<Rigidbody2D>();
         isSliding = false;
         startPosition = transform.position;
-
+        hitPoints.maxValue = Health;
+        hitPoints.value = Health;
     }
 
     // Update is called once per frame
@@ -164,7 +170,7 @@ public class Player : Character
     public override IEnumerator TakeDamage()
     {
         Health -= 1;
-
+        hitPoints.value = Health;
         if (IsDead)
         {
             CharacterAnimator.SetLayerWeight(1, 0);
