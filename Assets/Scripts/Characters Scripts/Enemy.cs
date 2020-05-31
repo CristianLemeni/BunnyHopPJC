@@ -36,6 +36,8 @@ public class Enemy : Character
 
         if (TakeDamege) { LookAt(); return; }
 
+        IsSliding = CharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("EnemySlide");
+
         currentState.Execute();
         LookAt();
 

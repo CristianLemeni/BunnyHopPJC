@@ -176,7 +176,7 @@ public class Player : Character
             CharacterAnimator.SetLayerWeight(1, 0);
             CharacterAnimator.SetTrigger("die");
 
-            Health = 10;
+
             Invoke("Death", 1);
 
             yield return null;
@@ -190,13 +190,16 @@ public class Player : Character
     {
         playerRigidbody.velocity = Vector2.zero;
         transform.position = startPosition;
+        Health = 10;
+        hitPoints.value = Health;
 
     }
 
     public override void OnTriggerEnter2D(Collider2D collider)
     {
-        
-        if (collider.tag == "Enemy")
+        GameObject enemy = GameObject.Find("Enemy");
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        if (collider.tag == "Enemy" && enemyScript.IsSliding)
         {
             StartCoroutine(TakeDamage());
         }
