@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ValiScene.unity
     guid: 1181e52056a5c9b4abb11442affd75eb
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: f0ced8a7f3cb49947949b0bba66b16ab
   m_configObjects: {}

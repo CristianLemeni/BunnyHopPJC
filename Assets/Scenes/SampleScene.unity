@@ -625,6 +625,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3238904453114408504, guid: 0fcb3daba00ea244cba93316978226a9,
+        type: 3}
+      propertyPath: other
+      value: 
+      objectReference: {fileID: 320929848}
     - target: {fileID: 4756044491888866810, guid: 0fcb3daba00ea244cba93316978226a9,
         type: 3}
       propertyPath: other
@@ -2218,6 +2223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Scene Loader and HpBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724142417213414434, guid: 344ee9b4c50919047a14acc58299e195,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5724142417452990802, guid: 344ee9b4c50919047a14acc58299e195,
         type: 3}
