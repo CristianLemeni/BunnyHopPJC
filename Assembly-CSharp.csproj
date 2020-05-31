@@ -77,7 +77,6 @@
     <Compile Include="Assets\Scripts\EnemySight.cs" />
     <Compile Include="Assets\Scripts\IgnoreCollision.cs" />
     <Compile Include="Assets\Scripts\LevelLoderScript.cs" />
-    <None Include="Assets\Images\help file - LudicArts.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Radu/source/repos/CristianLemeni/BunnyHopPJC/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
