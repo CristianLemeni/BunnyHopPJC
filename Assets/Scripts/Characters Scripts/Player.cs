@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -204,7 +204,8 @@ public class Player : Character
         hitPoints.value = Health;
 
     }
-
+    public int coin = 0;
+    public TextMeshProUGUI text;
     public override void OnTriggerEnter2D(Collider2D collider)
     {
         GameObject enemy = GameObject.Find("Enemy");
@@ -213,9 +214,18 @@ public class Player : Character
         {
             StartCoroutine(TakeDamage());
         }
-        if(collider.tag == "EndLevel")
+
+        if (collider.tag == "EndLevel")
         {
             LevelFinished = true;
+        }
+
+        if (collider.tag == "Coin")
+        {
+            coin++;
+            text.text = coin.ToString();
+            Destroy(collider.gameObject);
+
         }
     }
     private void Attack()
