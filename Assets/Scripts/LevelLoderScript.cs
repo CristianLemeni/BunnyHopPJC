@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +15,7 @@ public class LevelLoderScript : MonoBehaviour
     void Update()
     {
 
-        if (Player.LevelFinished)
+        if (Player != null && Player.LevelFinished)
         {
 
             LoadNextLevel();
@@ -52,7 +51,7 @@ public class LevelLoderScript : MonoBehaviour
 
     IEnumerator LoadLevel(int LevelIndex)
     {
-        if (LevelIndex >= SceneManager.sceneCountInBuildSettings || LevelIndex < 0 ) yield break ;
+        if (LevelIndex >= SceneManager.sceneCountInBuildSettings || LevelIndex < 0) yield break;
         animator.SetTrigger("start");
 
         yield return new WaitForSeconds(TransitionTime);
