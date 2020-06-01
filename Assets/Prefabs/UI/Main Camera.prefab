@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c3f7b23346d7548a11567e96e8b53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMax: 50
-  yMax: 50
+  xMax: 5000
+  yMax: 5000
   xMin: 0
   yMin: 0
