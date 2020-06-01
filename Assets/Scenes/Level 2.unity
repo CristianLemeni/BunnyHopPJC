@@ -645,6 +645,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1289133487769389798, guid: 11cfe90693bc53b4a9dd2f321a0f2c45,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1289133487769389802, guid: 11cfe90693bc53b4a9dd2f321a0f2c45,
         type: 3}
       propertyPath: m_Material
@@ -3990,6 +3995,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Winter Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 1289133488241167885, guid: 11cfe90693bc53b4a9dd2f321a0f2c45,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1289133488241167887, guid: 11cfe90693bc53b4a9dd2f321a0f2c45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4044,6 +4054,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282636903033673895, guid: 11cfe90693bc53b4a9dd2f321a0f2c45,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3282636903033673896, guid: 11cfe90693bc53b4a9dd2f321a0f2c45,
         type: 3}

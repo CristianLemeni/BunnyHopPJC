@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 326913122}
   - component: {fileID: 326913124}
   - component: {fileID: 326913123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trees Group 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434443839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 480302811}
   - component: {fileID: 480302813}
   - component: {fileID: 480302812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trees Group 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 691829784}
   - component: {fileID: 691829786}
   - component: {fileID: 691829785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trees Group 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1703,7 +1703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 952841120}
   - component: {fileID: 952841121}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1948,7 +1948,7 @@ GameObject:
   - component: {fileID: 1235863924}
   - component: {fileID: 1235863923}
   - component: {fileID: 1235863925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrassPlatforms
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -12109,7 +12109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1308784123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12368,7 +12368,7 @@ GameObject:
   - component: {fileID: 1413924817}
   - component: {fileID: 1413924816}
   - component: {fileID: 1413924821}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12796,7 +12796,7 @@ GameObject:
   - component: {fileID: 1721736897}
   - component: {fileID: 1721736899}
   - component: {fileID: 1721736898}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grass Group 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13578,7 +13578,7 @@ GameObject:
   - component: {fileID: 2095561428}
   - component: {fileID: 2095561427}
   - component: {fileID: 2095561429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small Platforms
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -14536,6 +14536,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 1492164211}
+    - target: {fileID: 5937463813928893016, guid: fd2312216448ddb42b8c5818a4a7759c,
+        type: 3}
+      propertyPath: isGround.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 5937463813928893017, guid: fd2312216448ddb42b8c5818a4a7759c,
         type: 3}
       propertyPath: m_Name

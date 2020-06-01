@@ -292,13 +292,15 @@ MonoBehaviour:
   radius: 0.1
   isGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   isSliding: 1
   JumpForce: 400
   airRunning: 1
   AttackCooldown: 2
   LevelFinished: 0
   hitPoints: {fileID: 0}
+  coin: 0
+  text: {fileID: 0}
 --- !u!61 &5937463813928893027
 BoxCollider2D:
   m_ObjectHideFlags: 0
