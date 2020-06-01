@@ -11,6 +11,7 @@ TagManager:
   - PlayerFeet
   - EndLevel
   - Coin
+  - Player Frame
   layers:
   - Default
   - TransparentFX
